@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Line from './Line'
-import { LINE_COUNT, TILE_COUNT, LETTER_COUNT_ERROR, RESET_STRING } from './Constants'
+import { LINE_COUNT, TILE_COUNT, LETTER_COUNT_ERROR, RESET_STRING, WORD_LIST_ERROR } from './Constants'
 
 function UserInput({ setError, setErrorKey }) {
     const [currentTileIndex, setCurrentTileIndex] = useState(0)
@@ -19,10 +19,17 @@ function UserInput({ setError, setErrorKey }) {
                     setError(LETTER_COUNT_ERROR)
                     setErrorKey((prev) => prev + 1)
                 } else {
-                    if (currentLineIndex < LINE_COUNT - 1) {
-                        setCurrentLineIndex(currentLineIndex + 1)
-                        setCurrentTileIndex(0)
-                        setError(RESET_STRING)
+                    const storedWords = localStorage.getItem('wordleWords')
+
+                    if (!storedWords.includes(currentLine.join('').toLowerCase())) {
+                        setError(WORD_LIST_ERROR)
+                        setErrorKey((prev) => prev + 1)
+                    } else {
+                        if (currentLineIndex < LINE_COUNT - 1) {
+                            setCurrentLineIndex(currentLineIndex + 1)
+                            setCurrentTileIndex(0)
+                            setError(RESET_STRING)
+                        }
                     }
                 }
             } else if (e.key === 'Backspace') {
