@@ -46,15 +46,18 @@ function App() {
             <h1 className='title'>Wordle</h1>
 
             {guessWord && (
-                <h2 className='guess-word'>
+                <>
+                    <h2 className='guess-word'>
                     Random Word: {guessWord}
-                </h2>
-            )}
+                    </h2>
 
-            <UserInput
-                setError={memoizedSetError}
-                setErrorKey={memoizedSetErrorKey}
-            />
+                    <UserInput
+                        guessWord={guessWord}
+                        setError={memoizedSetError}
+                        setErrorKey={memoizedSetErrorKey}
+                    />
+                </>
+            )}
 
             {error && <Error message={error} fadeOut={fadeOut} />}
         </>

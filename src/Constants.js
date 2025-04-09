@@ -5,3 +5,9 @@ export const ERROR_TIMER = 3000
 export const RESET_STRING = ""
 export const LETTER_COUNT_ERROR = "Not enough letters"
 export const WORD_LIST_ERROR = "Not in word list"
+
+export const EMPTY_STATUS = "empty"
+
+export const CORRECT_STATUS = "correct"
+export const PRESENT_STATUS = "present"
+export const ABSENT_STATUS = "absent"

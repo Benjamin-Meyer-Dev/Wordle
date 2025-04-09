@@ -1,14 +1,14 @@
 :root {
-    --tile-base-color: #555555;
-    --tile-included-color: #FFFF00;
-    --tile-correct-color: #008000;
+    --tile-correct-color: #006400;
+    --tile-present-color: #D6A100;
+    --tile-absent-color: #333333;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #333333;
+    background-color: #111111;
     font-family: Arial, sans-serif;
 }
 
@@ -25,17 +25,97 @@
     margin: 5px;
 }
 
-.tile {
+.line.shake {
+    animation: shakeAnimation 0.5s ease-in-out;
+}
+
+.tile-container {
     width: 65px;
     height: 65px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s;
+}
+
+.tile-container.flipped {
+    transform: rotateX(180deg);
+}
+
+.tile {
+    position: relative;
+    width: 100;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.tile-front, .tile-back {
+    position: absolute;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
+    align-items: center;
     color: white;
-    text-transform: uppercase;
-    background-color: var(--tile-base-color);
+    font-weight: bold;
+    font-size: 24px;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.tile-front {
+    border: 2px solid grey;
+}
+
+.tile-front.active-border {
+    border: 2px solid white;
+}
+
+.tile-back {
+    transform: rotateX(180deg);
+}
+
+.tile-back.correct {
+    background-color: var(--tile-correct-color);
+}
+
+.tile-back.present {
+    background-color: var(--tile-present-color);
+}
+
+.tile-back.absent {
+    background-color: var(--tile-absent-color);
+}
+
+.tile.pop {
+    animation: popAnimation 0.3s ease;
+}
+
+@keyframes popAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shakeAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .error-message {
