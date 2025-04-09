@@ -1,8 +1,12 @@
-export const TILE_COUNT = 5
 export const LINE_COUNT = 6
-export const ERROR_TIMER = 3000
+export const TILE_COUNT = 5
 
-export const RESET_STRING = ""
+export const ERROR_TIMER = 3000
+export const FLIP_DELAY = 400
+
+export const LETTER_MATCH = new RegExp('^[A-Z]$')
+
+export const BLANK_STRING = ""
 export const LETTER_COUNT_ERROR = "Not enough letters"
 export const WORD_LIST_ERROR = "Not in word list"
 

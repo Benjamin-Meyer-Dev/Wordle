@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from 'react'
 
-import { RESET_STRING, EMPTY_STATUS } from './Constants'
+import { BLANK_STRING, EMPTY_STATUS, FLIP_DELAY } from './Constants'
 
-function Tile({ letter, index }) {
+function Tile({ index, tile }) {
     const [pop, setPop] = useState(false)
     const [flipped, setFlipped] = useState(false)
-    const { letter: char, borderStatus, guessStatus } = letter
 
     useEffect(() => {
-        if (char !== RESET_STRING) {
+        if (tile.letter !== BLANK_STRING) {
             setPop(true)
-            const timeout = setTimeout(() => setPop(false), 150)
-            return () => clearTimeout(timeout)
+        } else {
+            setPop(false)
         }
-    }, [char])
+    }, [tile.letter])
 
     useEffect(() => {
-        if (guessStatus !== EMPTY_STATUS && !flipped) {
+        if (tile.guessStatus !== EMPTY_STATUS && !flipped) {
             const timeout = setTimeout(() => {
                 setFlipped(true)
-            }, index * 500)
+            }, index * FLIP_DELAY)
 
             return () => clearTimeout(timeout)
         }
-    }, [guessStatus, index, flipped])
+    }, [flipped, index, tile.guessStatus])
 
     return (
         <div className={`tile-container ${flipped ? 'flipped' : null}`}>
             <div className={`tile ${pop ? 'pop' : null}`}>
-                <div className={`tile-front ${borderStatus ? 'active-border' : null}`}>
-                    {char}
+                <div className={`tile-front ${tile.borderStatus ? 'active-border' : null}`}>
+                    {tile.letter}
                 </div>
-                <div className={`tile-back ${guessStatus}`}>
-                    {char}
+                <div className={`tile-back ${tile.guessStatus}`}>
+                    {tile.letter}
                 </div>
             </div>
         </div>
