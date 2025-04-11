@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
+import Error from './ErrorHandling.js'
 import FetchWords from './FetchWords'
 import Line from './Line.js'
 import UserInput from './UserInput.js'
 
-import { BLANK_STRING, EMPTY_STATUS, LINE_COUNT, TILE_COUNT } from './Constants'
+import { BLANK_STRING, EMPTY_STATUS, LETTER_COUNT_ERROR, LINE_COUNT, TILE_COUNT, WORD_LIST_ERROR } from './Constants'
 
 import './CSS/Styles.css'
 import { GuessCheck } from './GuessCheck.js'
@@ -14,10 +15,12 @@ function App() {
         Array.from({ length: LINE_COUNT }, () => Array(TILE_COUNT).fill({letter: BLANK_STRING, borderStatus: false, flippedStatus: false, guessStatus: EMPTY_STATUS}))
     )
 
+    const [storedWords, setStoredWords] = useState([])
     const [wordToGuess, setWordToGuess] = useState(BLANK_STRING)
     const [currentTileIndex, setCurrentTileIndex] = useState(0)
     const [currentLineIndex, setCurrentLineIndex] = useState(0)
-    const [storedWords, setStoredWords] = useState([])
+    const [errorMessage, setErrorMessage] = useState(BLANK_STRING)
+    const [errorFlag, setErrorFlag] = useState(false)
     const [gameOver, setGameOver] = useState(false)
 
     useEffect(() => {
@@ -86,11 +89,15 @@ function App() {
         const userGuess = board[currentLineIndex].map(tile => tile.letter).join(BLANK_STRING)
 
         if (userGuess.length !== TILE_COUNT) {
-            //Error handling
+            setErrorMessage(LETTER_COUNT_ERROR)
+            setErrorFlag(prev => !prev)
+            return
         }
 
         if (!storedWords.includes(userGuess.toLowerCase())) {
-            //Error handling
+            setErrorMessage(WORD_LIST_ERROR)
+            setErrorFlag(prev => !prev)
+            return
         }
 
         setBoard(prevBoard => {
@@ -124,6 +131,12 @@ function App() {
                     {[...Array(LINE_COUNT)].map((_, i) => (
                         <Line key={i} index={i} line={board[i]} currentGuess={currentLineIndex} gameOver={gameOver} />
                     ))}
+                </>
+            )}
+
+            {errorMessage && (
+                <>
+                    <Error errorMessage={errorMessage} errorFlag={errorFlag} />
                 </>
             )}
         </>
