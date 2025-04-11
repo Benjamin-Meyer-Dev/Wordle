@@ -2,8 +2,12 @@ import { useEffect } from 'react'
 
 import { LETTER_MATCH } from './Constants'
 
-function UserInput({ onLetterPress, onBackspacePress, onEnterPress }) {
+function UserInput({ onLetterPress, onBackspacePress, onEnterPress, gameOver }) {
     useEffect(() => {
+        if (gameOver) {
+            return
+        }
+
         const handleKeyDown = (e) => {
             const key = e.key.toUpperCase()
 
@@ -21,7 +25,7 @@ function UserInput({ onLetterPress, onBackspacePress, onEnterPress }) {
         return () => {
             window.removeEventListener('keydown', handleKeyDown)
         }
-    }, [onLetterPress, onBackspacePress, onEnterPress])
+    }, [onLetterPress, onBackspacePress, onEnterPress, gameOver])
 
     return null
 }

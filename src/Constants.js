@@ -1,7 +1,8 @@
 export const LINE_COUNT = 6
 export const TILE_COUNT = 5
 
-export const ERROR_TIMER = 3000
+export const BOUNCE_DELAY = 150
+export const ERROR_FADE_DELAY = 3000
 export const FLIP_DELAY = 400
 
 export const LETTER_MATCH = new RegExp('^[A-Z]$')

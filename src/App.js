@@ -18,6 +18,7 @@ function App() {
     const [currentTileIndex, setCurrentTileIndex] = useState(0)
     const [currentLineIndex, setCurrentLineIndex] = useState(0)
     const [storedWords, setStoredWords] = useState([])
+    const [gameOver, setGameOver] = useState(false)
 
     useEffect(() => {
         const storedAPIWords = localStorage.getItem('wordleWords')
@@ -41,7 +42,6 @@ function App() {
                 newBoard[currentLineIndex][currentTileIndex] = {
                     letter: newValue,
                     borderStatus: true,
-                    flippedStatus: false,
                     guessStatus: EMPTY_STATUS
                 }
 
@@ -59,7 +59,6 @@ function App() {
                     newBoard[currentLineIndex][newIndex] = {
                         letter: newValue,
                         borderStatus: false,
-                        flippedStatus: false,
                         guessStatus: EMPTY_STATUS    
                     }
 
@@ -84,34 +83,35 @@ function App() {
     }
 
     const handleEnterPress = () => {
-        if (currentTileIndex !== TILE_COUNT) {
+        const userGuess = board[currentLineIndex].map(tile => tile.letter).join(BLANK_STRING)
 
+        if (userGuess.length !== TILE_COUNT) {
+            //Error handling
+        }
+
+        if (!storedWords.includes(userGuess.toLowerCase())) {
+            //Error handling
+        }
+
+        setBoard(prevBoard => {
+            const newBoard = [...prevBoard]
+            newBoard[currentLineIndex] = GuessCheck(userGuess, wordToGuess)
+
+            return newBoard
+        })
+
+        if (userGuess === wordToGuess) {
+            setGameOver(true)
         } else {
-            const userGuess = board[currentLineIndex].map(tile => tile.letter).join(BLANK_STRING)
-
-            if (!storedWords.includes(userGuess.toLowerCase())) {
-
-            } else {
-                const guessResults = GuessCheck(userGuess, wordToGuess)
-
-                setBoard(prevBoard => {
-                    const newBoard = [...prevBoard]
-
-                    newBoard[currentLineIndex] = guessResults
-
-                    return newBoard
-                })
-
-                setCurrentLineIndex(prevIndex => prevIndex + 1)
-                setCurrentTileIndex(0)
-            }
+            setCurrentLineIndex(prevIndex => prevIndex + 1)
+            setCurrentTileIndex(0)
         }
     }
 
     return (
         <>
             <FetchWords />
-            <UserInput onLetterPress={handleLetterPress} onBackspacePress={handleBackspacePress} onEnterPress={handleEnterPress} />
+            <UserInput onLetterPress={handleLetterPress} onBackspacePress={handleBackspacePress} onEnterPress={handleEnterPress} gameOver={gameOver} />
 
             <h1 className='title'>Wordle</h1>
 
@@ -122,7 +122,7 @@ function App() {
                     </h2>
 
                     {[...Array(LINE_COUNT)].map((_, i) => (
-                        <Line key={i} line={board[i]} />
+                        <Line key={i} index={i} line={board[i]} currentGuess={currentLineIndex} gameOver={gameOver} />
                     ))}
                 </>
             )}

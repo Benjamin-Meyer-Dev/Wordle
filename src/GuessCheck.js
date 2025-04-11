@@ -20,6 +20,7 @@ export function GuessCheck(userGuess, wordToGuess) {
 
     return result.map(entry => ({
         ...entry,
-        borderStatus: false
+        borderStatus: true,
+        flippedStatus: true
     }))
 }

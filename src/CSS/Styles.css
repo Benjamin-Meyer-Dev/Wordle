@@ -1,4 +1,9 @@
 :root {
+    --screen-color: #111111;
+    --text-color: #FFFFFF;
+    --error-color: #FF0000;
+    --border-empty-color: #353535;
+    --border-full-color: #666666;
     --tile-correct-color: #006400;
     --tile-present-color: #D6A100;
     --tile-absent-color: #333333;
@@ -8,21 +13,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #111111;
+    background-color: var(--screen-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
 }
 
 .title {
     text-align: center;
-    color: white;
+    margin: 10px;
+}
+
+.word-to-guess {
+    text-align: center;
     margin: 10px;
 }
 
 .line {
     display: flex;
     justify-content: center;
-    gap: 5px;
-    margin: 5px;
 }
 
 .line.shake {
@@ -32,6 +40,7 @@
 .tile-container {
     width: 65px;
     height: 65px;
+    margin: 3px;
     transform-style: preserve-3d;
     transition: transform 0.6s;
 }
@@ -52,20 +61,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 30px;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
 }
 
 .tile-front {
-    border: 2px solid grey;
+    border: 2px solid var(--border-empty-color);
 }
 
 .tile-front.active-border {
-    border: 2px solid white;
+    border: 2px solid var(--border-full-color);
 }
 
 .tile-back {
@@ -86,6 +94,10 @@
 
 .tile.pop {
     animation: popAnimation 0.12s ease;
+}
+
+.tile.bounce {
+    animation: bounceAnimation 1.5s ease;
 }
 
 @keyframes popAnimation {
@@ -118,9 +130,33 @@
     }
 }
 
+@keyframes bounceAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(30px);
+        animation-timing-function: ease-out;
+    }
+    40% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: translateY(20px);
+        animation-timing-function: ease-out;
+    }
+    80% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .error-message {
-    background-color: red;
-    color: white;
+    background-color: var(--error-color);
     padding: 10px;
     margin: 10px;
     border-radius: 5px;

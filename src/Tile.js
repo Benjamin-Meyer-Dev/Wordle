@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { BLANK_STRING, BOUNCE_DELAY, FLIP_DELAY, TILE_COUNT } from './Constants'
 
-import { BLANK_STRING, EMPTY_STATUS, FLIP_DELAY } from './Constants'
-
-function Tile({ index, tile }) {
+function Tile({ index, tile, tileFlip, startBounce }) {
     const [pop, setPop] = useState(false)
-    const [flipped, setFlipped] = useState(false)
+    const [flip, setFlip] = useState(false)
+    const [bounce, setBounce] = useState(false)
 
     useEffect(() => {
         if (tile.letter !== BLANK_STRING) {
@@ -12,21 +12,37 @@ function Tile({ index, tile }) {
         } else {
             setPop(false)
         }
-    }, [tile.letter])
+    }, [tile])
 
     useEffect(() => {
-        if (tile.guessStatus !== EMPTY_STATUS && !flipped) {
+        if (tile.flippedStatus) {
             const timeout = setTimeout(() => {
-                setFlipped(true)
+                setFlip(true)
             }, index * FLIP_DELAY)
 
             return () => clearTimeout(timeout)
         }
-    }, [flipped, index, tile.guessStatus])
+    }, [index, tile])
+
+    useEffect(() => {
+        if (startBounce) {
+            const timeout = setTimeout(() => {
+                setBounce(true)
+            }, index * BOUNCE_DELAY)
+    
+            return () => clearTimeout(timeout)
+        }
+    }, [index, startBounce])
+
+    const handleFlipEnd = () => {
+        if (index === TILE_COUNT - 1) {
+            tileFlip()
+        }
+    }
 
     return (
-        <div className={`tile-container ${flipped ? 'flipped' : null}`}>
-            <div className={`tile ${pop ? 'pop' : null}`}>
+        <div className={`tile-container ${flip ? 'flipped' : null}`} onTransitionEnd={handleFlipEnd}>
+            <div className={`tile ${pop ? 'pop' : null} ${bounce ? 'bounce' : null}`}>
                 <div className={`tile-front ${tile.borderStatus ? 'active-border' : null}`}>
                     {tile.letter}
                 </div>
