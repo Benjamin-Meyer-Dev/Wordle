@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BLANK_STRING, BOUNCE_DELAY, FLIP_DELAY, TILE_COUNT } from './Constants'
 
-function Tile({ index, tile, tileFlip, startBounce }) {
+function Tile({ index, tile, tileFlip, startBounce, bounceEnd }) {
     const [pop, setPop] = useState(false)
     const [flip, setFlip] = useState(false)
     const [bounce, setBounce] = useState(false)
@@ -40,9 +40,15 @@ function Tile({ index, tile, tileFlip, startBounce }) {
         }
     }
 
+    const handleBounceEnd = (event) => {
+        if (event.animationName === 'bounceAnimation' && index === TILE_COUNT - 1) {
+            bounceEnd()
+        } 
+    }
+
     return (
         <div className={`tile-container ${flip ? 'flipped' : null}`} onTransitionEnd={handleFlipEnd}>
-            <div className={`tile ${pop ? 'pop' : null} ${bounce ? 'bounce' : null}`}>
+            <div className={`tile ${pop ? 'pop' : null} ${bounce ? 'bounce' : null}`} onAnimationEnd={handleBounceEnd}>
                 <div className={`tile-front ${tile.borderStatus ? 'active-border' : null}`}>
                     {tile.letter}
                 </div>
