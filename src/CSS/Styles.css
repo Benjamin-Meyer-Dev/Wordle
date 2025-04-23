@@ -1,59 +1,93 @@
+/*=============================================================================*/
+
+/*General styling for the entire game*/
 :root {
     --screen-color: #111111;
     --text-color: #FFFFFF;
     --error-color: #FF0000;
     --border-empty-color: #353535;
     --border-full-color: #666666;
-    --tile-correct-color: #006400;
-    --tile-present-color: #D6A100;
-    --tile-absent-color: #333333;
+    --correct-color: #006400;
+    --present-color: #D6A100;
+    --absent-color: #333333;
+    --keyboard-unused-color: #777777;
+    --overlay: #000000B3;
+    --overlay-button: #4CAF50;
+    --overlay-button-hover: #3C8F3C;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Arial, sans-serif;
     background-color: var(--screen-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    height: 100%;
 }
 
+button {
+    color: inherit;
+}
+
+/*=============================================================================*/
+
+/*Wordle title*/
 .title {
-    text-align: center;
     margin: 10px;
 }
 
-.word-to-guess {
-    text-align: center;
-    margin: 10px;
+/*=============================================================================*/
+
+/*Game board*/
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-bottom: 10px;
 }
 
-.line {
-    display: flex;
-    justify-content: center;
-}
+/*=============================================================================*/
 
-.line.shake {
-    animation: shakeAnimation 0.5s ease-in-out;
-}
-
+/*Tile container*/
 .tile-container {
+    transform-style: preserve-3d;
     width: 65px;
     height: 65px;
     margin: 3px;
-    transform-style: preserve-3d;
     transition: transform 0.6s;
+}
+
+.tile-container.shake {
+    animation: shakeAnimation 0.5s ease;
 }
 
 .tile-container.flipped {
     transform: rotateX(180deg);
 }
 
+.tile-container.notflipped {
+    transform: rotateX(0deg)
+}
+
+/*=============================================================================*/
+
+/*Tile*/
 .tile {
     position: relative;
+    transform-style: preserve-3d;
     width: 100;
     height: 100%;
-    transform-style: preserve-3d;
 }
 
 .tile-front, .tile-back {
@@ -62,10 +96,10 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    backface-visibility: hidden;
     font-size: 30px;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
 }
 
 .tile-front {
@@ -81,15 +115,15 @@
 }
 
 .tile-back.correct {
-    background-color: var(--tile-correct-color);
+    background-color: var(--correct-color);
 }
 
 .tile-back.present {
-    background-color: var(--tile-present-color);
+    background-color: var(--present-color);
 }
 
 .tile-back.absent {
-    background-color: var(--tile-absent-color);
+    background-color: var(--absent-color);
 }
 
 .tile.pop {
@@ -100,13 +134,14 @@
     animation: bounceAnimation 1.5s ease;
 }
 
+/*=============================================================================*/
+
+/*Error message*/
 .error-container {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 45px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .error-message {
@@ -117,7 +152,12 @@
     height: 100%;
     background-color: var(--error-color);
     border-radius: 5px;
+    opacity: 0;
+}
+
+.error-message.new-error {
     opacity: 1;
+    transition: none;
 }
 
 .error-message.fade-out {
@@ -129,57 +169,92 @@
     animation: pulseAnimation 0.3s ease-in-out;
 }
 
-@keyframes popAnimation {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.15);
-    }
-    100% {
-        transform: scale(1);
-    }
+/*=============================================================================*/
+
+/*Virtual keyboard*/
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px;
 }
 
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.key {
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    background-color: var(--keyboard-unused-color);
+    height: 60px;
+    width: 40px;
+    border-radius: 6px;
+    font-size: 24px;
+}
+
+.wide-key {
+    padding-top: 7px;
+    width: 65px;
+}
+
+.key.correct {
+    background-color: var(--correct-color);
+}
+
+.key.present {
+    background-color: var(--present-color);
+}
+
+.key.absent {
+    background-color: var(--absent-color);
+}
+
+/*=============================================================================*/
+
+/*Game complete overlay*/
 .overlay {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--overlay);
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
     z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .overlay-content {
-    padding: 2rem 3rem;
-    border-radius: 12px;
     text-align: center;
-    color: white;
+    opacity: 1;
 }
 
 .overlay-content h2 {
-    margin-bottom: 1rem;
+    margin: 12px;
 }
 
 .overlay-content button {
-    padding: 0.5rem 1.5rem;
-    font-size: 1.1rem;
     cursor: pointer;
     border: none;
+    background-color: var(--overlay-button);
+    padding: 10px 30px;
+    font-size: 18px;
     border-radius: 8px;
-    background-color: #4caf50;
-    color: white;
     transition: background-color 0.2s;
 }
 
 .overlay-content button:hover {
-    background-color: #45a045;
+    background-color: var(--overlay-button-hover);
 }
 
+/*=============================================================================*/
+
+/*Game animations*/
 @keyframes shakeAnimation {
     0% {
         transform: translateX(0);
@@ -198,11 +273,23 @@
     }
 }
 
+@keyframes popAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @keyframes bounceAnimation {
     0% {
         transform: translateY(0);
     }
-    20% {
+    30% {
         transform: translateY(30px);
         animation-timing-function: ease-out;
     }
@@ -210,7 +297,7 @@
         transform: translateY(0);
         animation-timing-function: ease-in;
     }
-    60% {
+    70% {
         transform: translateY(20px);
         animation-timing-function: ease-out;
     }
@@ -240,3 +327,5 @@
         transform: scale(1);
     }
 }
+
+/*=============================================================================*/
