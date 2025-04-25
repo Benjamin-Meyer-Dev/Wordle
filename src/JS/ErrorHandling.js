@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import { ERROR_FADE_DELAY, PULSE_ANIMATION } from './Constants'
+import { ERROR_FADE_DELAY, ERROR_PULSE_ANIMATION } from './Constants'
 
 //=========================================================================================================================================================================
 
+//Error handling for user input errors
 function Error({ error }) {
     const [fadeOut, setFadeOut] = useState(false)
     const [pulse, setPulse] = useState(false)
@@ -12,7 +13,7 @@ function Error({ error }) {
 
     //Handling the end of the pulse animation
     const handlePulseEnd = (e) => {
-        if (e.animationName === PULSE_ANIMATION) {
+        if (e.animationName === ERROR_PULSE_ANIMATION) {
             setPulse(false)
         }
     }

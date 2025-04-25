@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { ReactComponent as BackspaceIcon } from './Icons/Backspace.svg'
-import { ReactComponent as EnterIcon } from './Icons/Enter.svg'
+import { ReactComponent as BackspaceIcon } from '../Icons/Backspace.svg'
+import { ReactComponent as EnterIcon } from '../Icons/Enter.svg'
 
-import { ABSENT_STATUS, BACKSPACE_KEY, CORRECT_STATUS, ENTER_KEY, FIRST_ROW, PRESENT_STATUS, KEY, KEY_ABSENT, KEY_CORRECT, KEY_DOWN, KEY_PRESENT, LETTER_MATCH, SECOND_ROW, THIRD_ROW } from './Constants'
+import { ABSENT_STATUS, BACKSPACE_KEY, CORRECT_STATUS, ENTER_KEY, FIRST_ROW, KEY, KEY_ABSENT, KEY_CORRECT, KEY_DOWN, KEY_PRESENT, LETTER_MATCH, PRESENT_STATUS, SECOND_ROW, THIRD_ROW } from './Constants'
 
 //=========================================================================================================================================================================
 
@@ -80,7 +80,7 @@ function UserInput({ canInput, keyStatuses, onLetterPress, onBackspacePress, onE
                 </div>
                 <div className="keyboard-row">
                     {THIRD_ROW.map((key) => (
-                        <button key={key} onClick={() => handleInput(key)} className={`key ${key === ENTER_KEY || key === BACKSPACE_KEY? 'wide-key' : null} ${getKeyStatus(key)}`}>
+                        <button key={key} onClick={() => handleInput(key)} className={`key ${key === ENTER_KEY ? 'wide-key enter' : key === BACKSPACE_KEY ? 'wide-key backspace' : null} ${getKeyStatus(key)}`}>
                             {key === ENTER_KEY ? (<EnterIcon />) : key === BACKSPACE_KEY ? (<BackspaceIcon />) : (key)}
                         </button>
                     ))}

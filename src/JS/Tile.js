@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { BLANK_STRING, BOUNCE_ANIMATION, BOUNCE_DELAY, CLEAR_DELAY, FLIP_DELAY, SHAKE_ANIMATION, TILE_COUNT } from './Constants'
+import { BLANK_STRING, BOUNCE_DELAY, CLEAR_DELAY, FLIP_DELAY, TILE_BOUNCE_ANIMATION, TILE_COUNT, TILE_SHAKE_ANIMATION } from './Constants'
 
 //=========================================================================================================================================================================
 
@@ -15,7 +15,7 @@ function Tile({ row, col, tile, animations, tilesFlipped }) {
 
     //Handling the end of the shake animation
     const handleShakeEnd = (e) => {
-        if (e.animationName === SHAKE_ANIMATION) {
+        if (e.animationName === TILE_SHAKE_ANIMATION) {
             animations.shake?.onComplete(row)
         }
     }
@@ -47,7 +47,7 @@ function Tile({ row, col, tile, animations, tilesFlipped }) {
 
     //Handling the end of the bounce animation
     const handleBounceEnd = (e) => {
-        if (col === TILE_COUNT - 1 && e.animationName === BOUNCE_ANIMATION) {
+        if (col === TILE_COUNT - 1 && e.animationName === TILE_BOUNCE_ANIMATION) {
             animations.bounce?.onComplete()
         } 
     }

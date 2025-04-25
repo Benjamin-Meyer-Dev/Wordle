@@ -38,7 +38,7 @@ export const EMPTY_STATUS = {status: "empty", priority: 0}
 
 //Word bank
 export const NEW_LINE = "\n"
-export const WORD_BANK_PATH = "/WordBank.txt"
+export const WORD_BANK_PATH = "/Word Bank/WordBank.txt"
 export const USED_WORDS_LIMIT = 15000
 export const FIRST_SLICE = 1
 
@@ -52,9 +52,9 @@ export const WORD_LIST_ERROR = "Not in word list"
 //=========================================================================================================================================================================
 
 //Animations
-export const BOUNCE_ANIMATION = "bounceAnimation"
-export const SHAKE_ANIMATION = "shakeAnimation"
-export const PULSE_ANIMATION = "pulseAnimation"
+export const TILE_BOUNCE_ANIMATION = "tileBounceAnimation"
+export const TILE_SHAKE_ANIMATION = "tileShakeAnimation"
+export const ERROR_PULSE_ANIMATION = "errorPulseAnimation"
 
 export const BOUNCE_DELAY = 150
 export const ERROR_FADE_DELAY = 3000

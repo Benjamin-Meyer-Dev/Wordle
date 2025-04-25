@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 
 import Error from './ErrorHandling.js'
+import Footer from './Footer.js'
 import Overlay from './Overlay.js'
 import Tile from './Tile.js'
 import UserInput from './UserInput.js'
@@ -10,7 +11,7 @@ import { GuessCheck } from './GuessCheck.js'
 
 import { BLANK_STRING, EMPTY_STATUS, LETTER_COUNT_ERROR, LINE_COUNT, TILE_COUNT, WORD_LIST_ERROR } from './Constants'
 
-import './CSS/Styles.css'
+import '../CSS/Styles.css'
 
 //=========================================================================================================================================================================
 
@@ -177,8 +178,11 @@ function App() {
     //HTML structure with properties of the full game
     return (
         <>
-            <h1 className='title'>Wordle</h1>
-            <h2 className='word'>{wordToGuess}</h2>
+            {showOverlay && (
+                <Overlay resetGame={handleResetGame} gameResult={gameResult} wordToGuess={wordToGuess} guessNumber={currentTile.row} />
+            )}
+
+            <h1 className='title'>Wordle Unlimited</h1>
 
             {wordToGuess && (
                 <>
@@ -201,10 +205,7 @@ function App() {
 
             <Error error={error} />
             <UserInput canInput={canInput} keyStatuses={keyStatuses} onLetterPress={handleLetterPress} onBackspacePress={handleBackspacePress} onEnterPress={handleEnterPress} />
-
-            {showOverlay && (
-                <Overlay resetGame={handleResetGame} gameResult={gameResult} wordToGuess={wordToGuess} guessNumber={currentTile.row} />
-            )}
+            <Footer />
         </>
     )
 }
