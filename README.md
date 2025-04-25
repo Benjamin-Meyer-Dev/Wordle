@@ -12,3 +12,9 @@ Project is created with:
 
 ## How to Run
 To run this project:
+
+```
+$ npm start
+```
+
+The project will open in a local host window.
