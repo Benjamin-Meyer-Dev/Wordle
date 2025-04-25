@@ -1,14 +1,14 @@
-##Table of Contents
-[General Info](#general-info)
-[Tech Stack](#tech-stack)
-[How to Run](#how-to-run)
+## Table of Contents
+* [General Info](#general-info)
+* [Tech Stack](#tech-stack)
+* [How to Run](#how-to-run)
 
-##General Info
+## General Info
 This is Wordle.
 
-##Tech Stack
+## Tech Stack
 Project is created with:
 * React
 
-##How to Run
+## How to Run
 To run this project:
