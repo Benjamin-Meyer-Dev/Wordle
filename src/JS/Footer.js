@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ReactComponent as GitHubIcon } from '../Icons/GitHubIcon.svg'
-import { ReactComponent as LinkedInIcon } from '../Icons/LinkedInIcon.svg'
+import { ReactComponent as GitHubIcon } from '../Images/GitHubIcon.svg'
+import { ReactComponent as LinkedInIcon } from '../Images/LinkedInIcon.svg'
 
 //=========================================================================================================================================================================
 

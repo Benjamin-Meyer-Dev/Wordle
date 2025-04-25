@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { ReactComponent as BackspaceIcon } from '../Icons/Backspace.svg'
-import { ReactComponent as EnterIcon } from '../Icons/Enter.svg'
+import { ReactComponent as BackspaceIcon } from '../Images/Backspace.svg'
+import { ReactComponent as EnterIcon } from '../Images/Enter.svg'
 
 import { ABSENT_STATUS, BACKSPACE_KEY, CORRECT_STATUS, ENTER_KEY, FIRST_ROW, KEY, KEY_ABSENT, KEY_CORRECT, KEY_DOWN, KEY_PRESENT, LETTER_MATCH, PRESENT_STATUS, SECOND_ROW, THIRD_ROW } from './Constants'
 
