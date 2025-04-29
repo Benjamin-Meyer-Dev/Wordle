@@ -39,4 +39,4 @@ The project is created with the following technologies:
 
 ## Play the Game
 
-Try the live version here: [Wordle Unlimited](https://benjamin-meyer-dev.github.io/Wordle)
+Try the live version here: [Wordle Unlimited](https://benjamin-meyer-dev.github.io/Wordle_Unlimited)
