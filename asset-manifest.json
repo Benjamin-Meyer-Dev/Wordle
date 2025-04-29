@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Wordle/static/css/main.5693b4c7.css",
+    "main.js": "/Wordle/static/js/main.c3aa2360.js",
+    "static/media/GitHubIcon.svg": "/Wordle/static/media/GitHubIcon.816e801757831a5ca93d780cb29f2ec2.svg",
+    "static/media/LinkedInIcon.svg": "/Wordle/static/media/LinkedInIcon.05f4e2e81df5567858f3af2119b5a67e.svg",
+    "index.html": "/Wordle/index.html",
+    "static/media/Backspace.svg": "/Wordle/static/media/Backspace.a6574df5d145a026e10e6384edbf6db6.svg",
+    "static/media/Enter.svg": "/Wordle/static/media/Enter.83088106fd3c50a8c31d65a1e4756168.svg",
+    "main.5693b4c7.css.map": "/Wordle/static/css/main.5693b4c7.css.map",
+    "main.c3aa2360.js.map": "/Wordle/static/js/main.c3aa2360.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5693b4c7.css",
+    "static/js/main.c3aa2360.js"
+  ]
+}
