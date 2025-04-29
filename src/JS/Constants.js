@@ -38,7 +38,7 @@ export const EMPTY_STATUS = {status: "empty", priority: 0}
 
 //Word bank
 export const NEW_LINE = "\n"
-export const WORD_BANK_PATH = "/Word Bank/WordBank.txt"
+export const WORD_BANK_PATH = process.env.PUBLIC_URL + "/WordBank.txt"
 export const USED_WORDS_LIMIT = 15000
 export const FIRST_SLICE = 1
 
