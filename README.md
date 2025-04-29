@@ -14,11 +14,13 @@ This is a browser-based Wordle clone built with **React**. The project replicate
 ## Features
 This version of Wordle includes several custom improvements:
 
-1. **"New Game" Button**  
-   - After completing a game, you can immediately start a new one without refreshing the page.
+1. **Larger Word Bank**
+   - ~16,000 different words to guess from.
 2. **Unlimited Play**  
    - There's no daily limit — play as many times as you like with a new board reset animation.
-3. **Enhanced Error Messaging**  
+3. **"New Game" Button**  
+   - After completing a game, you can immediately start a new one without refreshing the page.
+4. **Enhanced Error Messaging**  
    - The look of error messages has been updated for a better user experience, making them more visually appealing and easier to notice.
 
 ---
