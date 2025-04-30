@@ -3,7 +3,7 @@
 ## Table of Contents
 - [General Info](#general-info)
 - [Features](#features)
-- [Tech Stack](#tech-stack)
+- [Technologies Used](#technologies-used)
 - [Play the Game](#play-the-game)
 
 ## General Info
@@ -25,8 +25,8 @@ This version of Wordle includes several custom improvements:
 
 ---
 
-## Tech Stack
-The project is created with the following technologies:
+## Technologies Used
+This project is created with the following technologies:
 
 - **Node.js** `22.13.1`
 - **npm** `10.4.0`
