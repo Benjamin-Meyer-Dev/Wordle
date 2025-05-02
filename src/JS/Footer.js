@@ -9,7 +9,7 @@ import { ReactComponent as LinkedInIcon } from '../Images/LinkedInIcon.svg'
 function Footer() {
     return (
         <div className='footer'>
-            <p>&copy; {new Date().getFullYear()} Benjamin Meyer. All rights reserved.</p>
+            <p className='rights'>&copy; {new Date().getFullYear()} Benjamin Meyer. All rights reserved.</p>
             <ul className='socials'>
                 <li>
                     <a href="https://github.com/Benjamin-Meyer-Dev" target="_blank" rel="nooperner noreferrer">
