@@ -48,7 +48,7 @@ button {
 /*Wordle title*/
 .title {
     text-align: center;
-    margin: 20px 15px 10px;
+    margin: 0 15px 10px 15px;
 }
 
 /*=============================================================================*/
@@ -388,7 +388,7 @@ button {
 
     .key {
         height: 50px;
-        width: 30px;
+        width: 32px;
     }
 
     .wide-key {
