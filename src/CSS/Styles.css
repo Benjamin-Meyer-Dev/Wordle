@@ -48,7 +48,7 @@ button {
 /*Wordle title*/
 .title {
     text-align: center;
-    margin: 0 15px 10px 15px;
+    margin: 20px 15px 10px;
 }
 
 /*=============================================================================*/
@@ -381,6 +381,10 @@ button {
 
 /*Mobile items*/
 @media (max-width: 600px) {
+    #root {
+        justify-content: flex-start;
+    }
+
     .tile-container {
         height: 55px;
         width: 55px;
