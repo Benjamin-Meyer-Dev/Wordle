@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Wordle_Unlimited/static/css/main.519a3a15.css",
+    "main.css": "/Wordle_Unlimited/static/css/main.fa5a6660.css",
     "main.js": "/Wordle_Unlimited/static/js/main.7f5a6628.js",
     "static/media/GitHubIcon.svg": "/Wordle_Unlimited/static/media/GitHubIcon.816e801757831a5ca93d780cb29f2ec2.svg",
     "static/media/LinkedInIcon.svg": "/Wordle_Unlimited/static/media/LinkedInIcon.05f4e2e81df5567858f3af2119b5a67e.svg",
     "index.html": "/Wordle_Unlimited/index.html",
     "static/media/Backspace.svg": "/Wordle_Unlimited/static/media/Backspace.a6574df5d145a026e10e6384edbf6db6.svg",
     "static/media/Enter.svg": "/Wordle_Unlimited/static/media/Enter.83088106fd3c50a8c31d65a1e4756168.svg",
-    "main.519a3a15.css.map": "/Wordle_Unlimited/static/css/main.519a3a15.css.map",
+    "main.fa5a6660.css.map": "/Wordle_Unlimited/static/css/main.fa5a6660.css.map",
     "main.7f5a6628.js.map": "/Wordle_Unlimited/static/js/main.7f5a6628.js.map"
   },
   "entrypoints": [
-    "static/css/main.519a3a15.css",
+    "static/css/main.fa5a6660.css",
     "static/js/main.7f5a6628.js"
   ]
 }
