@@ -48,7 +48,7 @@ button {
 /*Wordle title*/
 .title {
     text-align: center;
-    margin: 30px 15px 10px;
+    margin: 20px 15px 10px;
 }
 
 /*=============================================================================*/
@@ -194,9 +194,9 @@ button {
     font-weight: bold;
     background-color: var(--keyboard-unused-color);
     height: clamp(50px, min(9vw, 7vh), 60px);
-    width: clamp(35px, min(7vw, 5vh), 40px);
+    width: clamp(33px, min(7vw, 5vh), 38px);
     border-radius: 6px;
-    font-size: 24px;
+    font-size: 23px;
 }
 
 .wide-key {
@@ -229,8 +229,7 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 .rights {
@@ -241,7 +240,7 @@ button {
 .socials {
     display: flex;
     list-style: none;
-    margin: 15px 15px 30px;
+    margin: 15px 15px 20px;
     gap: 12px;
 }
 
