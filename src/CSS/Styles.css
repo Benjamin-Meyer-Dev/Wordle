@@ -379,9 +379,10 @@ button {
 
 /*=============================================================================*/
 
+/*Mobile items*/
 @media (max-width: 600px) {
     .key {
-        width: clamp(32px, min(7vw, 5vh), 38px);
+        width: clamp(34px, min(7vw, 5vh), 38px);
     }
 
     .wide-key {
