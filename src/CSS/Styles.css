@@ -64,8 +64,8 @@ button {
 /*Tile container*/
 .tile-container {
     transform-style: preserve-3d;
-    width: clamp(45px, 6vh, 65px);
-    height: clamp(45px, 6vh, 65px);
+    width: 65px;
+    height: 65px;
     margin: 3px;
     transition: transform 0.6s;
 }
@@ -193,8 +193,8 @@ button {
     border: none;
     font-weight: bold;
     background-color: var(--keyboard-unused-color);
-    height: clamp(50px, min(9vw, 7vh), 60px);
-    width: clamp(33px, min(7vw, 5vh), 38px);
+    height: 60px;
+    width: 40px;
     border-radius: 6px;
     font-size: 23px;
 }
@@ -381,12 +381,18 @@ button {
 
 /*Mobile items*/
 @media (max-width: 600px) {
+    .tile-container {
+        height: 55px;
+        width: 55px;
+    }
+
     .key {
+        height: 50px;
         width: 30px;
     }
 
     .wide-key {
-        width: clamp(55px, min(7vw, 8vh), 65px);
+        width: 55px;
     }
 }
 
