@@ -21,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 * {
@@ -48,7 +48,7 @@ button {
 /*Wordle title*/
 .title {
     text-align: center;
-    margin: 20px 15px 10px;
+    margin: 15px 15px 10px;
 }
 
 /*=============================================================================*/
@@ -144,7 +144,7 @@ button {
     justify-content: center;
     width: 100%;
     height: 45px;
-    margin: 18px;
+    margin: 12px;
 }
 
 .error-message {
@@ -178,7 +178,7 @@ button {
 .keyboard {
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
+    margin: 0 10px;
     gap: 8px;
 }
 
@@ -381,10 +381,6 @@ button {
 
 /*Mobile items*/
 @media (max-width: 600px) {
-    #root {
-        justify-content: flex-start;
-    }
-
     .tile-container {
         height: 55px;
         width: 55px;
