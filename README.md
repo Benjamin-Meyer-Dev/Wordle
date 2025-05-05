@@ -1,5 +1,9 @@
 # Wordle Unlimited
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Benjamin-Meyer-Dev/Wordle_Unlimited/main/src/Images/Example_Game.png" alt="Example Game" />
+</p>
+
 ## Table of Contents
 - [General Info](#general-info)
 - [Features](#features)
